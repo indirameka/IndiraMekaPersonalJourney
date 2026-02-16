@@ -3,9 +3,9 @@ import { MapPin, Leaf, BookOpen } from "lucide-react";
 const About = () => {
   const highlights = [
     {
-      icon: MapPin,
-      title: "Travel Enthusiast",
-      description: "Explored 25+ countries across 4 continents, seeking authentic experiences and cultural connections.",
+      icon: BookOpen,
+      title: "Storyteller",
+      description: "Sharing adventures and insights through writing, photography, and meaningful conversations.",
     },
     {
       icon: Leaf,
@@ -13,9 +13,9 @@ const About = () => {
       description: "Cultivating organic gardens for over 8 years, growing everything from heirloom tomatoes to rare flowers.",
     },
     {
-      icon: BookOpen,
-      title: "Storyteller",
-      description: "Sharing adventures and insights through writing, photography, and meaningful conversations.",
+      icon: MapPin,
+      title: "Travel Enthusiast",
+      description: "Explored 25+ countries across 4 continents, seeking authentic experiences and cultural connections.",
     },
   ];
 
