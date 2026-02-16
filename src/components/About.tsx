@@ -34,8 +34,7 @@ const About = () => {
               About Me
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              I believe life is meant to be lived fully—whether that's hiking through misty mountains,
-              getting my hands dirty in the garden, or penning thoughts that resonate with fellow dreamers.
+              I believe life is meant to be experienced with intention — building meaningful ideas, exploring wild landscapes, and nurturing growth both in soil and in spirit.
               My journey has taken me from bustling city streets to serene countryside paths,
               and I bring all these experiences into everything I create.
             </p>
