@@ -1,4 +1,5 @@
 import { MapPin, Leaf, BookOpen } from "lucide-react";
+import profilePic from "@/assets/IndiraAiImage.jpg";
 
 const About = () => {
   const highlights = [
@@ -22,16 +23,23 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
-            About Me
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            I believe life is meant to be lived fully—whether that's hiking through misty mountains, 
-            getting my hands dirty in the garden, or penning thoughts that resonate with fellow dreamers. 
-            My journey has taken me from bustling city streets to serene countryside paths, 
-            and I bring all these experiences into everything I create.
-          </p>
+        <div className="max-w-4xl mx-auto text-center mb-16 md:flex md:items-center md:gap-8">
+          <img
+            src={profilePic}
+            alt="Profile photo of Indira"
+            className="w-36 h-36 rounded-full mx-auto md:mx-0 object-cover shadow-lg mb-6 md:mb-0"
+          />
+          <div>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
+              About Me
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I believe life is meant to be lived fully—whether that's hiking through misty mountains,
+              getting my hands dirty in the garden, or penning thoughts that resonate with fellow dreamers.
+              My journey has taken me from bustling city streets to serene countryside paths,
+              and I bring all these experiences into everything I create.
+            </p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
