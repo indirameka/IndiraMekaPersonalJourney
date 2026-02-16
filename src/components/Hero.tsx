@@ -21,7 +21,7 @@ const Hero = () => {
             Welcome to my world
           </p>
           <h1 className="font-serif text-5xl md:text-7xl font-bold text-foreground mb-6 animate-fade-up opacity-0 [animation-delay:400ms]">
-            Explorer, Gardener & Storyteller
+            Entrupruner, Explorer & Gardener
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-up opacity-0 [animation-delay:600ms]">
             Capturing life's beautiful moments through travel adventures, nurturing gardens, and sharing stories that inspire.
