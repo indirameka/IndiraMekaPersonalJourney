@@ -1,8 +1,6 @@
-import { Heart } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="py-8 bg-background border-t border-border">
       <div className="container mx-auto px-6">
@@ -11,27 +9,14 @@ const Footer = () => {
             Portfolio
           </a>
 
-          <p className="text-muted-foreground text-sm flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-accent fill-accent" /> © {currentYear}
-          </p>
-
           <div className="flex items-center gap-6">
             <a
-              href="#"
-              className="text-muted-foreground hover:text-primary transition-colors text-sm"
+              href="https://www.linkedin.com/in/indirameka/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors text-sm flex items-center gap-2"
             >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-primary transition-colors text-sm"
-            >
-              Twitter
-            </a>
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-primary transition-colors text-sm"
-            >
+              <Linkedin className="w-4 h-4" />
               LinkedIn
             </a>
           </div>
