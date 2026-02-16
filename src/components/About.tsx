@@ -1,12 +1,12 @@
-import { MapPin, Leaf, BookOpen } from "lucide-react";
+import { MapPin, Leaf, Lightbulb } from "lucide-react";
 import profilePic from "@/assets/IndiraAiImage.jpg";
 
 const About = () => {
   const highlights = [
     {
-      icon: BookOpen,
-      title: "Storyteller",
-      description: "Sharing adventures and insights through writing, photography, and meaningful conversations.",
+      icon: Lightbulb,
+      title: "Entrepreneur",
+      description: "Building innovative ideas and turning vision into reality through strategic thinking and creative problem-solving.",
     },
     {
       icon: Leaf,
