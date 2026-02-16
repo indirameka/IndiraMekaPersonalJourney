@@ -16,7 +16,7 @@ const About = () => {
     {
       icon: MapPin,
       title: "Travel Enthusiast",
-      description: "Explored 25+ countries across 5 continents, seeking authentic experiences and cultural connections.",
+      description: "Explored 25+ countries across 5 continents and visited 6 of the 7 modern wonders of the world, always seeking authentic experiences and cultural connections.",
     },
   ];
 
