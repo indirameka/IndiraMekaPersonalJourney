@@ -8,7 +8,7 @@ const Passions = () => {
       title: "Travel Adventures",
       image: travelImg,
       description:
-        "From the aurora-lit skies of Iceland to the ancient temples of Kyoto, travel has shaped who I am. Each destination teaches me something new about the world and myself.",
+        "From the art and history of Italy to the diverse cultures of Asia and the open horizons of Australia and South America, travel has shaped who I am. Each place leaves me wiser, humbler, and more connected.",
       highlights: [
         "25+ Countries Explored",
         "Solo & Group Adventures",
