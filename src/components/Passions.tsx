@@ -1,5 +1,5 @@
-import travelImg from "@/assets/travel-1.jpg";
-import gardenImg from "@/assets/garden-1.jpg";
+const travelImg = "/travel-1.jpg";
+const gardenImg = "/garden-1.jpg";
 import { MapPin, Leaf, Camera, Heart } from "lucide-react";
 
 const Passions = () => {
@@ -21,11 +21,11 @@ const Passions = () => {
       title: "Garden & Grow",
       image: gardenImg,
       description:
-        "There's magic in watching a tiny seed transform into a flourishing plant. My garden is my sanctuary—a place where patience blooms into beauty.",
+        "There’s something powerful about watching a tiny seed grow into food on your table. My garden is my sanctuary — where patience turns into nourishment.",
       highlights: [
         "Organic & Heirloom Varieties",
         "Companion Planting",
-        "Seasonal Garden Design",
+        "Pure, Pesticide-Free Growing",
       ],
       icon: Leaf,
       color: "sage",

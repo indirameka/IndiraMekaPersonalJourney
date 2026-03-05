@@ -1,4 +1,4 @@
-import heroBg from "@/assets/hero-bg.jpg";
+const heroBg = "/hero-bg.jpg";
 import { ArrowDown } from "lucide-react";
 
 const Hero = () => {
