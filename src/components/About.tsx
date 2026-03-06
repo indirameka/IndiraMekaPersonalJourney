@@ -1,5 +1,5 @@
 import { MapPin, Leaf, Lightbulb } from "lucide-react";
-const profilePic = "/IndiraAiImage.jpg";
+import profilePic from "@/assets/IndiraAiImage.jpg";
 
 const About = () => {
   const highlights = [

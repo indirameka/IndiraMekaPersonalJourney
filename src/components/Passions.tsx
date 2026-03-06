@@ -1,5 +1,5 @@
-const travelImg = "/travel-1.jpg";
-const gardenImg = "/garden-1.jpg";
+import travelImg from "@/assets/travel-1.jpg";
+import gardenImg from "@/assets/garden-1.jpg";
 import { MapPin, Leaf, Camera, Heart } from "lucide-react";
 
 const Passions = () => {
