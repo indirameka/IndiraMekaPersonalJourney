@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // SPA redirect: store the path and redirect to root
+      var path = window.location.pathname;
+      sessionStorage.setItem('spa-redirect', path);
+      window.location.replace('/');
+    </script>
+  </head>
+  <body></body>
+</html>
