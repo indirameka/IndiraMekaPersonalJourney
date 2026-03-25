@@ -1,8 +1,16 @@
 import travelImg from "@/assets/travel-1.jpg";
 import gardenImg from "@/assets/garden-1.jpg";
 import { MapPin, Leaf, Camera, Heart } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Passions = () => {
+  const navigate = useNavigate();
+
+  const galleryRoutes: Record<string, string> = {
+    "Travel Adventures": "/gallery/travel",
+    "Garden & Grow": "/gallery/garden",
+  };
+
   const passions = [
     {
       title: "Travel Adventures",
@@ -60,10 +68,13 @@ const Passions = () => {
                     className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-2">
+                  <button
+                    onClick={() => navigate(galleryRoutes[passion.title])}
+                    className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-2 items-center cursor-pointer"
+                  >
                     <Camera className="w-5 h-5 text-primary-foreground" />
-                    <span className="text-primary-foreground text-sm">View Gallery</span>
-                  </div>
+                    <span className="text-primary-foreground text-sm font-medium">View Gallery</span>
+                  </button>
                 </div>
               </div>
 

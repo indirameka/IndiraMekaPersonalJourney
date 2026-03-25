@@ -1,8 +1,12 @@
 import { Calendar, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
+  const navigate = useNavigate();
+
   const posts = [
     {
+      slug: "japanese-countryside",
       title: "Finding Serenity in the Japanese Countryside",
       excerpt:
         "A journey through rural Japan taught me that the most beautiful destinations are often the ones unmarked on tourist maps...",
@@ -11,6 +15,7 @@ const Blog = () => {
       readTime: "8 min read",
     },
     {
+      slug: "winter-garden-planning",
       title: "Winter Garden Planning: A Complete Guide",
       excerpt:
         "As the frost settles, it's the perfect time to dream and plan next season's garden. Here's my comprehensive approach...",
@@ -19,6 +24,7 @@ const Blog = () => {
       readTime: "12 min read",
     },
     {
+      slug: "slow-travel",
       title: "The Art of Slow Travel: Less Places, More Meaning",
       excerpt:
         "In a world obsessed with bucket lists, I've discovered the transformative power of staying longer and going deeper...",
@@ -40,13 +46,13 @@ const Blog = () => {
               Stories, insights, and guides from my adventures and garden journeys.
             </p>
           </div>
-          <a
-            href="#"
+          <button
+            onClick={() => navigate("/blog/japanese-countryside")}
             className="mt-6 md:mt-0 inline-flex items-center gap-2 text-primary font-medium hover:gap-4 transition-all duration-300"
           >
             View All Posts
             <ArrowRight size={18} />
-          </a>
+          </button>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -73,13 +79,13 @@ const Blog = () => {
                   {post.title}
                 </h3>
                 <p className="text-muted-foreground line-clamp-3">{post.excerpt}</p>
-                <a
-                  href="#"
+                <button
+                  onClick={() => navigate(`/blog/${post.slug}`)}
                   className="inline-flex items-center gap-2 mt-4 text-primary font-medium text-sm hover:gap-3 transition-all duration-300"
                 >
                   Read More
                   <ArrowRight size={16} />
-                </a>
+                </button>
               </div>
             </article>
           ))}
