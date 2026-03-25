@@ -23,7 +23,7 @@ const Blog = () => {
       date: "March 24, 2026",
       category: "Travel",
       readTime: "5 min read",
-      image: "/blog/wonders-collage.jpg",
+      image: "/blog/wonders-collage.png",
     },
     {
       slug: "japanese-countryside",

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const navLinks = [
+  const anchorLinks = [
     { href: "#about", label: "About" },
     { href: "#passions", label: "Passions" },
-    { href: "/blog", label: "Blog" },
   ];
+
+  const linkClass = "text-muted-foreground hover:text-primary transition-colors duration-300 font-medium";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -20,15 +23,14 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors duration-300 font-medium"
-              >
+            {anchorLinks.map((link) => (
+              <a key={link.href} href={link.href} className={linkClass}>
                 {link.label}
               </a>
             ))}
+            <button onClick={() => navigate("/blog")} className={linkClass}>
+              Blog
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -44,7 +46,7 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden pt-4 pb-2 animate-fade-in">
-            {navLinks.map((link) => (
+            {anchorLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -54,6 +56,12 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
+            <button
+              className="block w-full text-left py-3 text-muted-foreground hover:text-primary transition-colors duration-300"
+              onClick={() => { navigate("/blog"); setIsOpen(false); }}
+            >
+              Blog
+            </button>
           </div>
         )}
       </div>

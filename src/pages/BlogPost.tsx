@@ -1,6 +1,24 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, ArrowLeft, Clock } from "lucide-react";
 
+function renderText(text: string): (string | JSX.Element)[] {
+  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g;
+  const parts: (string | JSX.Element)[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = linkRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
+    parts.push(
+      <a key={match.index} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:opacity-80 transition-opacity">
+        {match[1]}
+      </a>
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
+
 const posts: Record<
   string,
   {
@@ -9,7 +27,6 @@ const posts: Record<
     category: string;
     readTime: string;
     content: string[];
-    headerImage?: string;
   }
 > = {
   "chasing-wonders": {
@@ -17,12 +34,12 @@ const posts: Record<
     date: "March 24, 2026",
     category: "Travel",
     readTime: "5 min read",
-    headerImage: "/blog/wonders-personal.jpg",
     content: [
-      "It started with a song—Puvvulo Daagunna (Telugu version) from the movie Jeans—where director S. Shankar took viewers across breathtaking man-made wonders of the world. As I watched those visuals unfold, a quiet dream took root: what if I could one day stand in each of those places myself, not just as a viewer, but as a traveler living that story?",
+      "It started with a song—[Puvvulo Daagunna (Telugu version)](https://youtu.be/NICkZRy64QY?si=jIZI-cL9uI3FWh7g) from the movie Jeans—where director S. Shankar took viewers across breathtaking man-made wonders of the world. As I watched those visuals unfold, a quiet dream took root: what if I could one day stand in each of those places myself, not just as a viewer, but as a traveler living that story?",
       "Years later, that dream turned into a journey. One by one, I found myself walking through history, culture, and human brilliance—six of the New Seven Wonders checked off, each carrying its own story, emotion, and sense of awe. Yet one remains—Petra—waiting patiently as the world settles and borders become safer, holding space for the final chapter of this personal quest.",
       "QUOTE:Travel makes one modest. You see what a tiny place you occupy in the world. — Gustave Flaubert",
       "This journey was never just about ticking destinations off a list; it was about chasing a feeling sparked by a song, and discovering how far a single moment of inspiration can carry you across the world. And when the time is right, Petra will not just be the last wonder—it will be the one that completes the story.",
+      "IMAGE:/blog/wonders-personal.jpg",
     ],
   },
   "japanese-countryside": {
@@ -124,14 +141,6 @@ const BlogPost = () => {
           {post.title}
         </h1>
 
-        {post.headerImage && (
-          <img
-            src={post.headerImage}
-            alt={post.title}
-            className="w-full rounded-2xl mb-8 object-cover max-h-[480px]"
-          />
-        )}
-
         <div className="flex items-center gap-5 text-muted-foreground text-sm mb-12 pb-8 border-b border-border">
           <span className="flex items-center gap-1.5">
             <Calendar size={14} />
@@ -145,7 +154,14 @@ const BlogPost = () => {
 
         <div className="space-y-6">
           {post.content.map((paragraph, i) =>
-            paragraph.startsWith("QUOTE:") ? (
+            paragraph.startsWith("IMAGE:") ? (
+              <img
+                key={i}
+                src={paragraph.replace("IMAGE:", "").trim()}
+                alt=""
+                className="w-full rounded-2xl object-cover"
+              />
+            ) : paragraph.startsWith("QUOTE:") ? (
               <blockquote
                 key={i}
                 className="border-l-4 border-primary pl-6 italic text-muted-foreground text-lg leading-relaxed"
@@ -154,7 +170,7 @@ const BlogPost = () => {
               </blockquote>
             ) : (
               <p key={i} className="text-foreground text-lg leading-relaxed">
-                {paragraph}
+                {renderText(paragraph)}
               </p>
             )
           )}

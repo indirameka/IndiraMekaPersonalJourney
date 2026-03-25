@@ -1,6 +1,5 @@
 import Navigation from "@/components/Navigation";
 import BlogSection from "@/components/Blog";
-import Footer from "@/components/Footer";
 
 const Blog = () => {
   return (
@@ -9,7 +8,6 @@ const Blog = () => {
       <div className="pt-20">
         <BlogSection />
       </div>
-      <Footer />
     </div>
   );
 };
