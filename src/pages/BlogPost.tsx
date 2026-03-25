@@ -9,8 +9,22 @@ const posts: Record<
     category: string;
     readTime: string;
     content: string[];
+    headerImage?: string;
   }
 > = {
+  "chasing-wonders": {
+    title: "Chasing Wonders: From a Song to Six (and One More to Go)",
+    date: "March 24, 2026",
+    category: "Travel",
+    readTime: "5 min read",
+    headerImage: "/blog/wonders-personal.jpg",
+    content: [
+      "It started with a song—Puvvulo Daagunna (Telugu version) from the movie Jeans—where director S. Shankar took viewers across breathtaking man-made wonders of the world. As I watched those visuals unfold, a quiet dream took root: what if I could one day stand in each of those places myself, not just as a viewer, but as a traveler living that story?",
+      "Years later, that dream turned into a journey. One by one, I found myself walking through history, culture, and human brilliance—six of the New Seven Wonders checked off, each carrying its own story, emotion, and sense of awe. Yet one remains—Petra—waiting patiently as the world settles and borders become safer, holding space for the final chapter of this personal quest.",
+      "QUOTE:Travel makes one modest. You see what a tiny place you occupy in the world. — Gustave Flaubert",
+      "This journey was never just about ticking destinations off a list; it was about chasing a feeling sparked by a song, and discovering how far a single moment of inspiration can carry you across the world. And when the time is right, Petra will not just be the last wonder—it will be the one that completes the story.",
+    ],
+  },
   "japanese-countryside": {
     title: "Finding Serenity in the Japanese Countryside",
     date: "December 15, 2025",
@@ -58,9 +72,10 @@ const posts: Record<
 };
 
 const slugMap: Record<number, string> = {
-  0: "japanese-countryside",
-  1: "winter-garden-planning",
-  2: "slow-travel",
+  0: "chasing-wonders",
+  1: "japanese-countryside",
+  2: "winter-garden-planning",
+  3: "slow-travel",
 };
 
 const BlogPost = () => {
@@ -109,6 +124,14 @@ const BlogPost = () => {
           {post.title}
         </h1>
 
+        {post.headerImage && (
+          <img
+            src={post.headerImage}
+            alt={post.title}
+            className="w-full rounded-2xl mb-8 object-cover max-h-[480px]"
+          />
+        )}
+
         <div className="flex items-center gap-5 text-muted-foreground text-sm mb-12 pb-8 border-b border-border">
           <span className="flex items-center gap-1.5">
             <Calendar size={14} />
@@ -121,11 +144,20 @@ const BlogPost = () => {
         </div>
 
         <div className="space-y-6">
-          {post.content.map((paragraph, i) => (
-            <p key={i} className="text-foreground text-lg leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
+          {post.content.map((paragraph, i) =>
+            paragraph.startsWith("QUOTE:") ? (
+              <blockquote
+                key={i}
+                className="border-l-4 border-primary pl-6 italic text-muted-foreground text-lg leading-relaxed"
+              >
+                {paragraph.replace("QUOTE:", "").trim()}
+              </blockquote>
+            ) : (
+              <p key={i} className="text-foreground text-lg leading-relaxed">
+                {paragraph}
+              </p>
+            )
+          )}
         </div>
 
         <div className="mt-16 pt-8 border-t border-border">

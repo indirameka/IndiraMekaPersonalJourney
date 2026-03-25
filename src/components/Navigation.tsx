@@ -8,7 +8,6 @@ const Navigation = () => {
     { href: "#about", label: "About" },
     { href: "#passions", label: "Passions" },
     { href: "/blog", label: "Blog" },
-    { href: "#contact", label: "Contact" },
   ];
 
   return (

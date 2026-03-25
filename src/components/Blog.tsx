@@ -1,10 +1,30 @@
 import { Calendar, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+interface BlogPost {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  category: string;
+  readTime: string;
+  image?: string;
+}
+
 const Blog = () => {
   const navigate = useNavigate();
 
-  const posts = [
+  const posts: BlogPost[] = [
+    {
+      slug: "chasing-wonders",
+      title: "Chasing Wonders: From a Song to Six (and One More to Go)",
+      excerpt:
+        "It started with a song—and a quiet dream to one day stand at each of the New Seven Wonders. Six checked off, one still waiting. Here's the journey so far...",
+      date: "March 24, 2026",
+      category: "Travel",
+      readTime: "5 min read",
+      image: "/blog/wonders-collage.jpg",
+    },
     {
       slug: "japanese-countryside",
       title: "Finding Serenity in the Japanese Countryside",
@@ -47,7 +67,7 @@ const Blog = () => {
             </p>
           </div>
           <button
-            onClick={() => navigate("/blog/japanese-countryside")}
+            onClick={() => navigate("/blog")}
             className="mt-6 md:mt-0 inline-flex items-center gap-2 text-primary font-medium hover:gap-4 transition-all duration-300"
           >
             View All Posts
@@ -62,10 +82,25 @@ const Blog = () => {
               className="bg-card rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="h-48 bg-gradient-to-br from-sage-light to-terracotta-light flex items-center justify-center">
-                <span className="bg-background/90 px-4 py-2 rounded-full text-sm font-medium text-primary">
-                  {post.category}
-                </span>
+              <div className="h-48 relative overflow-hidden">
+                {post.image ? (
+                  <>
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <span className="absolute top-3 left-3 bg-background/90 px-4 py-2 rounded-full text-sm font-medium text-primary">
+                      {post.category}
+                    </span>
+                  </>
+                ) : (
+                  <div className="h-full bg-gradient-to-br from-sage-light to-terracotta-light flex items-center justify-center">
+                    <span className="bg-background/90 px-4 py-2 rounded-full text-sm font-medium text-primary">
+                      {post.category}
+                    </span>
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
