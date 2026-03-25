@@ -1,7 +1,7 @@
 import { MapPin, Send } from "lucide-react";
 import { useState } from "react";
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwzgvqb";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqegzyyl";
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
