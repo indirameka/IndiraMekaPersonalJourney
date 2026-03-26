@@ -110,20 +110,20 @@ const Passions = () => {
                 </ul>
                 {passion.title === "Travel Adventures" && (
                   <button
-                    onClick={() => navigate("/travel-blogs")}
+                    onClick={() => navigate("/gallery/travel")}
                     className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-4 transition-all duration-300"
                   >
                     <BookOpen className="w-4 h-4" />
-                    Read Travel Stories
+                    View Gallery
                   </button>
                 )}
                 {passion.title === "Garden & Grow" && (
                   <button
-                    onClick={() => navigate("/garden-blogs")}
+                    onClick={() => navigate("/gallery/garden")}
                     className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-4 transition-all duration-300"
                   >
                     <BookOpen className="w-4 h-4" />
-                    Read Garden Stories
+                    View Gallery
                   </button>
                 )}
               </div>
