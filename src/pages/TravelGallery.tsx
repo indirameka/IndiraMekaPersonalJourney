@@ -1,25 +1,121 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, X } from "lucide-react";
+import { ArrowLeft, X, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import travel1 from "@/assets/travel-gallery-1.jpg";
 import travel2 from "@/assets/travel-gallery-2.jpg";
 import travel3 from "@/assets/travel-gallery-3.jpg";
 import travel4 from "@/assets/travel-gallery-4.jpg";
 import travel5 from "@/assets/travel-gallery-5.jpg";
 import travel6 from "@/assets/travel-gallery-6.jpg";
+import travel7 from "@/assets/travel-gallery-7.jpg";
+import travel8 from "@/assets/travel-gallery-8.jpg";
 
 const photos = [
-  { src: travel1, caption: "Lakeside reflections in the Swiss Alps" },
-  { src: travel2, caption: "Golden hour at an Asian coastal town" },
-  { src: travel3, caption: "Winding roads through rural Europe" },
-  { src: travel4, caption: "Highland meadows at dawn" },
-  { src: travel5, caption: "Open road adventures across continents" },
-  { src: travel6, caption: "Majestic mountain peaks at sunrise" },
+  {
+    src: travel1,
+    location: "Reykjavik, Iceland",
+    caption: "Standing in the hush of an Icelandic winter, where the snow swallows every sound.",
+  },
+  {
+    src: travel2,
+    location: "Northern Lights, Iceland",
+    caption: "The sky caught fire in green — a night on Iceland's Arctic coast I'll never forget.",
+  },
+  {
+    src: travel3,
+    location: "Jökulsárlón Glacier Lagoon, Iceland",
+    caption: "Sitting quietly among ancient ice at Iceland's most ethereal glacier lagoon.",
+  },
+  {
+    src: travel4,
+    location: "Seattle, Washington, USA",
+    caption: "Looking straight up at the Space Needle — an icon that earns its reputation.",
+  },
+  {
+    src: travel5,
+    location: "Bryce Canyon, Utah, USA",
+    caption: "Weaving through Utah's cathedral of red rock hoodoos, carved by wind and time.",
+  },
+  {
+    src: travel6,
+    location: "Arches National Park, Utah, USA",
+    caption: "Delicate Arch at golden hour — the stillness here is its own kind of awe.",
+  },
+  {
+    src: travel7,
+    location: "Misty Lake, Asia",
+    caption: "A solitary pagoda emerges through morning mist — the world perfectly reflected.",
+  },
+  {
+    src: travel8,
+    location: "Warangal, Telangana, India",
+    caption: "Among the ancient red-stone ruins of the Kakatiya temples — history you can touch.",
+  },
 ];
+
+function GalleryCard({
+  photo,
+  index,
+  onClick,
+}: {
+  photo: (typeof photos)[0];
+  index: number;
+  onClick: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`relative group overflow-hidden rounded-2xl cursor-pointer transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+      }`}
+      style={{ transitionDelay: `${(index % 4) * 80}ms` }}
+      onClick={onClick}
+    >
+      <img
+        src={photo.src}
+        alt={photo.location}
+        className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Always-visible location pill */}
+      <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full">
+        <MapPin size={12} className="text-primary" />
+        <span className="text-xs font-semibold text-foreground">{photo.location}</span>
+      </div>
+      {/* Hover overlay with caption */}
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <p className="absolute bottom-0 left-0 right-0 px-4 py-5 text-primary-foreground text-sm leading-snug translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        {photo.caption}
+      </p>
+    </div>
+  );
+}
 
 const TravelGallery = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (selected === null) return;
+      if (e.key === "ArrowRight") setSelected((s) => (s !== null && s < photos.length - 1 ? s + 1 : s));
+      if (e.key === "ArrowLeft") setSelected((s) => (s !== null && s > 0 ? s - 1 : s));
+      if (e.key === "Escape") setSelected(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [selected]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,27 +134,18 @@ const TravelGallery = () => {
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A glimpse into the places that have shaped my perspective — from
-            mountain peaks to coastal towns and everything in between.
+            Arctic glaciers to ancient temples and everything in between.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {photos.map((photo, index) => (
-            <div
+            <GalleryCard
               key={index}
-              className="relative group overflow-hidden rounded-2xl cursor-pointer"
+              photo={photo}
+              index={index}
               onClick={() => setSelected(index)}
-            >
-              <img
-                src={photo.src}
-                alt={photo.caption}
-                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <p className="absolute bottom-4 left-4 right-4 text-primary-foreground text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {photo.caption}
-              </p>
-            </div>
+            />
           ))}
         </div>
       </div>
@@ -66,7 +153,7 @@ const TravelGallery = () => {
       {/* Lightbox */}
       {selected !== null && (
         <div
-          className="fixed inset-0 bg-foreground/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-foreground/95 z-50 flex items-center justify-center p-4"
           onClick={() => setSelected(null)}
         >
           <button
@@ -75,35 +162,45 @@ const TravelGallery = () => {
           >
             <X size={32} />
           </button>
+
+          <button
+            className="absolute left-4 text-primary-foreground hover:text-primary transition-colors disabled:opacity-20 p-2"
+            disabled={selected === 0}
+            onClick={(e) => { e.stopPropagation(); setSelected((s) => (s !== null ? s - 1 : s)); }}
+          >
+            <ChevronLeft size={40} />
+          </button>
+
           <div
             className="max-w-4xl w-full"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={photos[selected].src}
-              alt={photos[selected].caption}
-              className="w-full max-h-[80vh] object-contain rounded-xl"
+              alt={photos[selected].location}
+              className="w-full max-h-[75vh] object-contain rounded-xl"
             />
-            <p className="text-center text-primary-foreground mt-4 text-lg">
-              {photos[selected].caption}
-            </p>
-            <div className="flex justify-center gap-4 mt-4">
-              <button
-                className="text-primary-foreground hover:text-primary transition-colors disabled:opacity-30"
-                disabled={selected === 0}
-                onClick={() => setSelected((s) => (s !== null ? s - 1 : s))}
-              >
-                ← Previous
-              </button>
-              <button
-                className="text-primary-foreground hover:text-primary transition-colors disabled:opacity-30"
-                disabled={selected === photos.length - 1}
-                onClick={() => setSelected((s) => (s !== null ? s + 1 : s))}
-              >
-                Next →
-              </button>
+            <div className="text-center mt-5">
+              <div className="inline-flex items-center gap-2 bg-primary/20 px-4 py-1.5 rounded-full mb-2">
+                <MapPin size={14} className="text-primary" />
+                <span className="text-primary font-semibold text-sm">{photos[selected].location}</span>
+              </div>
+              <p className="text-primary-foreground/80 text-sm max-w-xl mx-auto mt-1">
+                {photos[selected].caption}
+              </p>
+              <p className="text-primary-foreground/40 text-xs mt-3">
+                {selected + 1} / {photos.length}
+              </p>
             </div>
           </div>
+
+          <button
+            className="absolute right-4 text-primary-foreground hover:text-primary transition-colors disabled:opacity-20 p-2"
+            disabled={selected === photos.length - 1}
+            onClick={(e) => { e.stopPropagation(); setSelected((s) => (s !== null ? s + 1 : s)); }}
+          >
+            <ChevronRight size={40} />
+          </button>
         </div>
       )}
     </div>
