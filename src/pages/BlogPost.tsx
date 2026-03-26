@@ -43,7 +43,7 @@ const posts: Record<
       "Years later, that dream turned into a journey. One by one, I found myself walking through history, culture, and human brilliance—six of the New Seven Wonders checked off, each carrying its own story, emotion, and sense of awe. Yet one remains—Petra—waiting patiently as the world settles and borders become safer, holding space for the final chapter of this personal quest.",
       "QUOTE:Travel makes one modest. You see what a tiny place you occupy in the world. — Gustave Flaubert",
       "This journey was never just about ticking destinations off a list; it was about chasing a feeling sparked by a song, and discovering how far a single moment of inspiration can carry you across the world. And when the time is right, Petra will not just be the last wonder—it will be the one that completes the story.",
-      "IMAGE:/blog/wonders-personal.jpg",
+      "IMAGE:/blog/wonders-personal.jpg|Six wonders down — one still waiting. The journey continues.",
     ],
   },
   "tomatoes": {
@@ -60,7 +60,7 @@ const posts: Record<
       "Now, my favorite salad is the simplest: just fresh tomatoes, a pinch of salt, and maybe olive oil.",
       "Planting marigolds and zinnias brought in pollinators, improved the garden ecosystem, and over time, even the tomatoes felt more vibrant in flavor.",
       "The only problem? Once you've had a real tomato, there's no going back.",
-      "IMAGE:/blog/tomatoes-detail.jpg",
+      "IMAGE:/blog/tomatoes-detail.jpg|Fresh from the garden — nothing store-bought comes close.",
     ],
   },
   "slow-travel": {
@@ -76,7 +76,7 @@ const posts: Record<
       "HIGHLIGHT:Slow travel is not lazy travel — it is intentional. It means choosing depth over breadth, conversation over sightseeing, repetition over novelty. When you return to the same street, trail, or temple every day, you begin to notice things: the way light hits the mountains, which fisherman always waves in the harbor, the rhythm of prayers in the temples. These small details are the texture of a place — invisible on a checklist.",
       "Since then, I've spent long afternoons simply watching life unfold, meditating beside waterfalls, hiking with no plan but to follow the trails, and wandering villages without a map. These were not 'hidden gems' for Instagram — they were simply time, given generously to a place.",
       "Travel fewer places. Stay longer. Learn the name of your guide, your server, the locals who make a place live. The world will reveal more of itself to you than any highlight reel ever could.",
-      "IMAGE:/blog/slow-travel-detail.jpg",
+      "IMAGE:/blog/slow-travel-detail.jpg|Somewhere between the fifteenth country and the twentieth, the counting stopped.",
     ],
   },
 };
@@ -147,12 +147,18 @@ const BlogPost = () => {
         <div className="space-y-6">
           {post.content.map((paragraph, i) =>
             paragraph.startsWith("IMAGE:") ? (
-              <img
-                key={i}
-                src={paragraph.replace("IMAGE:", "").trim()}
-                alt=""
-                className="w-full rounded-2xl object-cover"
-              />
+              <figure key={i} className="space-y-3">
+                <img
+                  src={paragraph.replace("IMAGE:", "").split("|")[0].trim()}
+                  alt=""
+                  className="w-full rounded-2xl object-cover"
+                />
+                {paragraph.includes("|") && (
+                  <figcaption className="text-center text-muted-foreground text-sm italic">
+                    {paragraph.split("|")[1].trim()}
+                  </figcaption>
+                )}
+              </figure>
             ) : paragraph.startsWith("HIGHLIGHT:") ? (
               <p key={i} className="text-foreground text-lg leading-relaxed font-bold italic">
                 {renderText(paragraph.replace("HIGHLIGHT:", "").trim())}

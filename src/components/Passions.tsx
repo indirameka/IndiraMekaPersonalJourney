@@ -7,7 +7,7 @@ const Passions = () => {
   const navigate = useNavigate();
 
   const galleryRoutes: Record<string, string> = {
-    "Travel Adventures": "/gallery/travel",
+    "Travel Adventures": "/travel-blogs",
     "Garden & Grow": "/gallery/garden",
   };
 
@@ -72,8 +72,14 @@ const Passions = () => {
                     onClick={() => navigate(galleryRoutes[passion.title])}
                     className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-2 items-center cursor-pointer"
                   >
-                    <Camera className="w-5 h-5 text-primary-foreground" />
-                    <span className="text-primary-foreground text-sm font-medium">View Gallery</span>
+                    {passion.title === "Travel Adventures" ? (
+                      <BookOpen className="w-5 h-5 text-primary-foreground" />
+                    ) : (
+                      <Camera className="w-5 h-5 text-primary-foreground" />
+                    )}
+                    <span className="text-primary-foreground text-sm font-medium">
+                      {passion.title === "Travel Adventures" ? "Read Travel Stories" : "View Gallery"}
+                    </span>
                   </button>
                 </div>
               </div>
