@@ -26,13 +26,14 @@ const Blog = () => {
       image: "/blog/wonders-collage.png",
     },
     {
-      slug: "winter-garden-planning",
-      title: "Winter Garden Planning: A Complete Guide",
+      slug: "tomatoes",
+      title: "How Growing My Own Tomatoes Ruined Store-Bought Ones",
       excerpt:
-        "As the frost settles, it's the perfect time to dream and plan next season's garden. Here's my comprehensive approach...",
+        "Growing has always been my passion — but I didn't expect it to ruin tomatoes for me. Once you've had a real tomato, there's no going back...",
       date: "November 28, 2025",
       category: "Gardening",
-      readTime: "12 min read",
+      readTime: "4 min read",
+      image: "/blog/tomatoes-card.jpg",
     },
     {
       slug: "slow-travel",

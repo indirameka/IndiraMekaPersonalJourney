@@ -2,17 +2,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Calendar, ArrowLeft, Clock } from "lucide-react";
 
 function renderText(text: string): (string | JSX.Element)[] {
-  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g;
+  const tokenRegex = /\[([^\]]+)\]\((https?:\/\/[^)]+)\)|\*\*(.+?)\*\*/g;
   const parts: (string | JSX.Element)[] = [];
   let lastIndex = 0;
   let match: RegExpExecArray | null;
-  while ((match = linkRegex.exec(text)) !== null) {
+  while ((match = tokenRegex.exec(text)) !== null) {
     if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
-    parts.push(
-      <a key={match.index} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:opacity-80 transition-opacity">
-        {match[1]}
-      </a>
-    );
+    if (match[1] !== undefined) {
+      parts.push(
+        <a key={match.index} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:opacity-80 transition-opacity">
+          {match[1]}
+        </a>
+      );
+    } else {
+      parts.push(<strong key={match.index}>{match[3]}</strong>);
+    }
     lastIndex = match.index + match[0].length;
   }
   if (lastIndex < text.length) parts.push(text.slice(lastIndex));
@@ -42,19 +46,21 @@ const posts: Record<
       "IMAGE:/blog/wonders-personal.jpg",
     ],
   },
-  "winter-garden-planning": {
-    title: "Winter Garden Planning: A Complete Guide",
+  "tomatoes": {
+    title: "How Growing My Own Tomatoes Ruined Store-Bought Ones",
     date: "November 28, 2025",
     category: "Gardening",
-    readTime: "12 min read",
+    readTime: "4 min read",
     content: [
-      "By the time the first hard frost settles over the beds and the last of the autumn squash has been harvested, most gardeners retreat indoors with a warm cup of something and a stack of seed catalogues. This is not idleness — this is the most important work of the growing year.",
-      "Winter planning is where gardens are truly made. The physical labour of spring and summer is only possible because of the dreaming, sketching, and reading done in the colder months.",
-      "Start with a soil audit. Pull out last year's notes (you kept notes, right?) and review what grew well, what struggled, and where the drainage problems showed up in wet weeks. Soil is a living system and it has a memory. Work with it, not against it.",
-      "Crop rotation is non-negotiable for long-term garden health. A simple rule: don't grow the same plant family in the same bed more than once every three years. This breaks pest and disease cycles naturally and gives your soil a chance to replenish specific nutrients.",
-      "Now is also the time to plan your companion planting combinations. Basil beside tomatoes, nasturtiums at the bed edges to deter aphids, dill to attract beneficial insects — these relationships take time to understand but pay off enormously once they become habitual.",
-      "Order your seeds early. The best heirloom varieties from smaller seed companies sell out by January. I keep a seed library in old glass jars, sorted by plant family, labelled by harvest date and germination rate. It's one of the most satisfying filing systems I own.",
-      "Finally, don't forget to rest. The garden rests in winter. So should you. This is the season for nourishing the gardener, not just the garden.",
+      "Growing has always been my passion — but I didn't expect it to ruin tomatoes for me.",
+      "The first time I ate one straight from my garden, it was different. Sweeter, juicier, full of life. After that, store-bought tomatoes just didn't compare.",
+      "I tried everything — heirlooms, cherry, beefsteak — and one thing stood out: **the closer to natural (non-GMO/heirloom), the better the taste.**",
+      "Living in California, I explored what's available here: Early Girl (balanced and reliable), Campari (juicy and slightly sweet), Roma (great for cooking but milder), and heirlooms like Brandywine (rich, complex, and closest to that bold flavor I grew up with in India).",
+      "But even the best store options can't match a tomato ripened fully on the vine.",
+      "Now, my favorite salad is the simplest: just fresh tomatoes, a pinch of salt, and maybe olive oil.",
+      "Planting marigolds and zinnias brought in pollinators, improved the garden ecosystem, and over time, even the tomatoes felt more vibrant in flavor.",
+      "The only problem? Once you've had a real tomato, there's no going back.",
+      "IMAGE:/blog/tomatoes-detail.jpg",
     ],
   },
   "slow-travel": {
@@ -77,7 +83,7 @@ const posts: Record<
 
 const slugMap: Record<number, string> = {
   0: "chasing-wonders",
-  1: "winter-garden-planning",
+  1: "tomatoes",
   2: "slow-travel",
 };
 
