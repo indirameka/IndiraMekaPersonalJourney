@@ -51,6 +51,7 @@ const Blog = () => {
       date: "November 10, 2025",
       category: "Travel",
       readTime: "6 min read",
+      image: "/blog/slow-travel-card.jpg",
     },
   ];
 

@@ -77,13 +77,14 @@ const posts: Record<
     category: "Travel",
     readTime: "6 min read",
     content: [
-      "Somewhere between my fifteenth country and my twentieth, I stopped counting. Not because the numbers stopped mattering, but because I'd begun to understand that the number was the wrong metric entirely.",
-      "For years I travelled the way many of us are taught to — quickly, efficiently, checking places off a list. Two days in Prague, three in Vienna, a frantic overnight train to Budapest. I saw a great deal. I understood very little.",
-      "The shift happened in Portugal. I'd booked two weeks in Lisbon intending to use it as a base for day trips to Sintra, the Alentejo, Porto. Instead, I found myself returning to the same café every morning, learning the names of the pastry cases, getting drawn into a neighbourhood festival I stumbled upon, and spending an entire afternoon following a grandmother through a market simply because she seemed to know exactly what she was doing.",
-      "That was the trip that changed how I travel. Slow travel is not lazy travel — it is intentional travel. It means choosing depth over breadth, conversation over sights, repetition over novelty.",
-      "When you return to the same street corner every evening, you begin to notice things: how the light changes, who walks by at what hour, which dog always sleeps in the same doorway. These details are the texture of a place, invisible on a two-hour walking tour.",
-      "I've since spent three weeks in a single village in Umbria, a month on one island in Greece, ten days in a mountain town in Peru with no tourist infrastructure whatsoever. These were not 'off the beaten path' adventures in the Instagram sense. They were simply time, given generously to a place.",
-      "Travel fewer places. Stay longer. Learn the name of your server. The world will reveal more of itself to you than you could ever find in a highlights reel.",
+      "Somewhere between my fifteenth country and my twentieth, I stopped counting. Not because the numbers stopped mattering, but because I began to realize that the number was the wrong measure entirely.",
+      "For years, I traveled like most of us are taught — quickly, efficiently, checking boxes. I saw a lot. I understood very little.",
+      "The realization came in China while visiting Beijing and Shanghai. I had planned a packed itinerary — the Forbidden City, the Great Wall, the Bund — but in the midst of it, I found myself pausing. I lingered in quiet tea houses, wandered down side streets, and listened to the rhythm of the city. It struck me that I had been moving too fast, chasing sights instead of experiences. That was the moment I understood what slow travel really meant.",
+      "After China, everything changed. In Italy, I lingered in small piazzas, chatting with locals over espresso, watching life unfold around the fountains, and letting the rhythm of the streets guide my days. In Iceland, I wandered tiny fishing villages, followed the northern lights across the sky, and let the wind chart my path. In Banff, I hiked the Rockies without a strict plan, noticing the subtle changes in light across the mountains and the quiet patterns of wildlife. In Tamil Nadu, I moved at the pace of village life, following temple rituals and markets with no map but a willingness to be present.",
+      "HIGHLIGHT:Slow travel is not lazy travel — it is intentional. It means choosing depth over breadth, conversation over sightseeing, repetition over novelty. When you return to the same street, trail, or temple every day, you begin to notice things: the way light hits the mountains, which fisherman always waves in the harbor, the rhythm of prayers in the temples. These small details are the texture of a place — invisible on a checklist.",
+      "Since then, I've spent long afternoons simply watching life unfold, meditating beside waterfalls, hiking with no plan but to follow the trails, and wandering villages without a map. These were not 'hidden gems' for Instagram — they were simply time, given generously to a place.",
+      "Travel fewer places. Stay longer. Learn the name of your guide, your server, the locals who make a place live. The world will reveal more of itself to you than any highlight reel ever could.",
+      "IMAGE:/blog/slow-travel-detail.jpg",
     ],
   },
 };
@@ -161,6 +162,10 @@ const BlogPost = () => {
                 alt=""
                 className="w-full rounded-2xl object-cover"
               />
+            ) : paragraph.startsWith("HIGHLIGHT:") ? (
+              <p key={i} className="text-foreground text-lg leading-relaxed font-bold italic">
+                {renderText(paragraph.replace("HIGHLIGHT:", "").trim())}
+              </p>
             ) : paragraph.startsWith("QUOTE:") ? (
               <blockquote
                 key={i}

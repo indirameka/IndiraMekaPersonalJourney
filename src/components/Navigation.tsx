@@ -9,6 +9,7 @@ const Navigation = () => {
   const anchorLinks = [
     { href: "#about", label: "About" },
     { href: "#passions", label: "Passions" },
+    { href: "#contact", label: "Connect" },
   ];
 
   const linkClass = "text-muted-foreground hover:text-primary transition-colors duration-300 font-medium";
