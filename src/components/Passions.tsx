@@ -1,6 +1,6 @@
 import travelImg from "@/assets/travel-1.jpg";
 import gardenImg from "@/assets/garden-1.jpg";
-import { MapPin, Leaf, Camera, Heart } from "lucide-react";
+import { MapPin, Leaf, Camera, Heart, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Passions = () => {
@@ -106,6 +106,15 @@ const Passions = () => {
                     </li>
                   ))}
                 </ul>
+                {passion.title === "Travel Adventures" && (
+                  <button
+                    onClick={() => navigate("/travel-blogs")}
+                    className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-4 transition-all duration-300"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    Read Travel Stories
+                  </button>
+                )}
               </div>
             </div>
           ))}

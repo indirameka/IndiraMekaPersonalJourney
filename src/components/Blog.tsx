@@ -33,7 +33,7 @@ const Blog = () => {
       date: "November 28, 2025",
       category: "Gardening",
       readTime: "4 min read",
-      image: "/blog/tomatoes-card.jpg",
+      image: "/blog/tomatoes-detail.jpg",
     },
     {
       slug: "slow-travel",
