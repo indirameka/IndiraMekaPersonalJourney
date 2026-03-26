@@ -7,8 +7,8 @@ const Passions = () => {
   const navigate = useNavigate();
 
   const galleryRoutes: Record<string, string> = {
-    "Travel Adventures": "/travel-blogs",
-    "Garden & Grow": "/garden-blogs",
+    "Travel Adventures": "/gallery/travel",
+    "Garden & Grow": "/gallery/garden",
   };
 
   const passions = [
@@ -74,7 +74,7 @@ const Passions = () => {
                   >
                     <BookOpen className="w-5 h-5 text-primary-foreground" />
                     <span className="text-primary-foreground text-sm font-medium">
-                      {passion.title === "Travel Adventures" ? "Read Travel Stories" : "Read Garden Stories"}
+                      View Gallery
                     </span>
                   </button>
                 </div>
