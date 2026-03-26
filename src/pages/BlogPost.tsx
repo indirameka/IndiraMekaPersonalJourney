@@ -42,20 +42,6 @@ const posts: Record<
       "IMAGE:/blog/wonders-personal.jpg",
     ],
   },
-  "japanese-countryside": {
-    title: "Finding Serenity in the Japanese Countryside",
-    date: "December 15, 2025",
-    category: "Travel",
-    readTime: "8 min read",
-    content: [
-      "There's a particular kind of quiet that exists in rural Japan — not silence exactly, but a settled, deliberate stillness that seems to hold the world gently in place. I discovered it on a rain-soaked morning in the Kiso Valley, where wooden post towns have stood largely unchanged for centuries.",
-      "I had been in Tokyo for a week — overstimulated, caffeinated, and utterly enchanted — when a local suggested I take the Chuo Line west and lose myself for a few days. 'The real Japan is not in the neon,' she said. 'It is in the mist between the cedar trees.'",
-      "The post towns of Magome and Tsumago lie along the old Nakasendo highway, a route that connected Edo to Kyoto long before bullet trains existed. Walking between them on cobblestoned paths worn smooth by centuries of feet, I felt unmoored from time in the best possible way.",
-      "Every inn, or minshuku, I stayed at was run by an older couple. Breakfasts were elaborate arrangements of pickled vegetables, miso soup, grilled fish, and steamed rice — food that tasted unmistakably like care. The hosts would bow on my arrival and bow again deeper on my departure, as though my presence had been a gift rather than a transaction.",
-      "What struck me most was how beauty here was found in restraint. A single branch of plum blossoms in a ceramic vase. A moss-covered stone lantern at the edge of a gravel path. These weren't decorative gestures — they were philosophy made visible.",
-      "I came home lighter. Not just in luggage, but in expectation. The Japanese countryside reminded me that the most beautiful destinations are often unmarked on tourist maps, quietly waiting for those patient enough to wander off the main road.",
-    ],
-  },
   "winter-garden-planning": {
     title: "Winter Garden Planning: A Complete Guide",
     date: "November 28, 2025",
@@ -91,9 +77,8 @@ const posts: Record<
 
 const slugMap: Record<number, string> = {
   0: "chasing-wonders",
-  1: "japanese-countryside",
-  2: "winter-garden-planning",
-  3: "slow-travel",
+  1: "winter-garden-planning",
+  2: "slow-travel",
 };
 
 const BlogPost = () => {

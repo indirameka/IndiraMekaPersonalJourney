@@ -26,15 +26,6 @@ const Blog = () => {
       image: "/blog/wonders-collage.png",
     },
     {
-      slug: "japanese-countryside",
-      title: "Finding Serenity in the Japanese Countryside",
-      excerpt:
-        "A journey through rural Japan taught me that the most beautiful destinations are often the ones unmarked on tourist maps...",
-      date: "December 15, 2025",
-      category: "Travel",
-      readTime: "8 min read",
-    },
-    {
       slug: "winter-garden-planning",
       title: "Winter Garden Planning: A Complete Guide",
       excerpt:
