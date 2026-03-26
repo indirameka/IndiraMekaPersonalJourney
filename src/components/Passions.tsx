@@ -1,6 +1,6 @@
 import travelImg from "@/assets/travel-1.jpg";
 import gardenImg from "@/assets/garden-1.jpg";
-import { MapPin, Leaf, Camera, Heart, BookOpen } from "lucide-react";
+import { MapPin, Leaf, Heart, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Passions = () => {
@@ -8,7 +8,7 @@ const Passions = () => {
 
   const galleryRoutes: Record<string, string> = {
     "Travel Adventures": "/travel-blogs",
-    "Garden & Grow": "/gallery/garden",
+    "Garden & Grow": "/garden-blogs",
   };
 
   const passions = [
@@ -72,13 +72,9 @@ const Passions = () => {
                     onClick={() => navigate(galleryRoutes[passion.title])}
                     className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-2 items-center cursor-pointer"
                   >
-                    {passion.title === "Travel Adventures" ? (
-                      <BookOpen className="w-5 h-5 text-primary-foreground" />
-                    ) : (
-                      <Camera className="w-5 h-5 text-primary-foreground" />
-                    )}
+                    <BookOpen className="w-5 h-5 text-primary-foreground" />
                     <span className="text-primary-foreground text-sm font-medium">
-                      {passion.title === "Travel Adventures" ? "Read Travel Stories" : "View Gallery"}
+                      {passion.title === "Travel Adventures" ? "Read Travel Stories" : "Read Garden Stories"}
                     </span>
                   </button>
                 </div>
@@ -119,6 +115,15 @@ const Passions = () => {
                   >
                     <BookOpen className="w-4 h-4" />
                     Read Travel Stories
+                  </button>
+                )}
+                {passion.title === "Garden & Grow" && (
+                  <button
+                    onClick={() => navigate("/garden-blogs")}
+                    className="mt-6 inline-flex items-center gap-2 text-primary font-medium hover:gap-4 transition-all duration-300"
+                  >
+                    <BookOpen className="w-4 h-4" />
+                    Read Garden Stories
                   </button>
                 )}
               </div>

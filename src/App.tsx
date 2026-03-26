@@ -11,6 +11,7 @@ import TravelGallery from "./pages/TravelGallery";
 import GardenGallery from "./pages/GardenGallery";
 import BlogPost from "./pages/BlogPost";
 import TravelBlogs from "./pages/TravelBlogs";
+import GardenBlogs from "./pages/GardenBlogs";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/travel-blogs" element={<TravelBlogs />} />
+          <Route path="/garden-blogs" element={<GardenBlogs />} />
           <Route path="/gallery/travel" element={<TravelGallery />} />
           <Route path="/gallery/garden" element={<GardenGallery />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

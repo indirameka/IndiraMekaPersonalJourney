@@ -47,14 +47,18 @@ const About = () => {
           {highlights.map((item, index) => (
             <div
               key={item.title}
-              className={`bg-card rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${item.title === "Travel Enthusiast" ? "cursor-pointer" : ""}`}
+              className={`bg-card rounded-2xl p-8 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${item.title === "Travel Enthusiast" || item.title === "Passionate Gardener" ? "cursor-pointer" : ""}`}
               style={{ animationDelay: `${index * 150}ms` }}
-              onClick={item.title === "Travel Enthusiast" ? () => navigate("/travel-blogs") : undefined}
+              onClick={
+                item.title === "Travel Enthusiast" ? () => navigate("/travel-blogs") :
+                item.title === "Passionate Gardener" ? () => navigate("/garden-blogs") :
+                undefined
+              }
             >
               <div className="w-16 h-16 bg-sage-light rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <item.icon className="w-8 h-8 text-primary" />
               </div>
-              <h3 className={`font-serif text-xl font-bold mb-3 ${item.title === "Travel Enthusiast" ? "text-primary underline underline-offset-4" : "text-foreground"}`}>
+              <h3 className={`font-serif text-xl font-bold mb-3 ${item.title === "Travel Enthusiast" || item.title === "Passionate Gardener" ? "text-primary underline underline-offset-4" : "text-foreground"}`}>
                 {item.title}
               </h3>
               <p className="text-muted-foreground">{item.description}</p>
