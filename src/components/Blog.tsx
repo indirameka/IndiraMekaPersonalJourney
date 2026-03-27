@@ -9,12 +9,24 @@ interface BlogPost {
   category: string;
   readTime: string;
   image?: string;
+  isNew?: boolean;
 }
 
 const Blog = () => {
   const navigate = useNavigate();
 
   const posts: BlogPost[] = [
+    {
+      slug: "entrepreneurship-journey",
+      title: "From No Dreams to Building Them: My Unexpected Journey into Entrepreneurship",
+      excerpt:
+        "I didn't grow up dreaming of becoming an entrepreneur. There was no grand vision—just curiosity, hobbies, and a willingness to try things. Here's how a fixer-upper changed everything...",
+      date: "March 27, 2026",
+      category: "Entrepreneurship",
+      readTime: "5 min read",
+      image: "/blog/entrepreneur-card.jpg",
+      isNew: true,
+    },
     {
       slug: "chasing-wonders",
       title: "Chasing Wonders: From a Song to Six (and One More to Go)",
@@ -34,16 +46,6 @@ const Blog = () => {
       category: "Gardening",
       readTime: "4 min read",
       image: "/blog/tomatoes-detail.jpg",
-    },
-    {
-      slug: "slow-travel",
-      title: "The Art of Slow Travel: Less Places, More Meaning",
-      excerpt:
-        "In a world obsessed with bucket lists, I've discovered the transformative power of staying longer and going deeper...",
-      date: "November 10, 2025",
-      category: "Travel",
-      readTime: "6 min read",
-      image: "/blog/slow-travel-card.jpg",
     },
   ];
 
@@ -86,6 +88,11 @@ const Blog = () => {
                     <span className="absolute top-3 left-3 bg-background/90 px-4 py-2 rounded-full text-sm font-medium text-primary">
                       {post.category}
                     </span>
+                    {post.isNew && (
+                      <span className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">
+                        New
+                      </span>
+                    )}
                   </>
                 ) : (
                   <div className="h-full bg-gradient-to-br from-sage-light to-terracotta-light flex items-center justify-center">
