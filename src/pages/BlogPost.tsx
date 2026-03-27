@@ -63,6 +63,27 @@ const posts: Record<
       "IMAGE:/blog/tomatoes-detail.jpg|Fresh from the garden — nothing store-bought comes close.",
     ],
   },
+  "entrepreneurship-journey": {
+    title: "From No Dreams to Building Them: My Unexpected Journey into Entrepreneurship",
+    date: "March 27, 2026",
+    category: "Entrepreneurship",
+    readTime: "5 min read",
+    content: [
+      "I didn't grow up dreaming of becoming an entrepreneur. There was no grand vision—just curiosity, hobbies, and a willingness to try things. For the longest time, I thought that's all it would ever be.",
+      "SECTION:Finding Interest Where I Least Expected It",
+      "It started with a fixer-upper. Not a business plan, just a space that needed work. As I got involved, I found myself drawn to the process—transforming something neglected into something alive again. That's when I realized I wasn't just helping—I was building.",
+      "IMAGE:/blog/entrepreneur-before.jpg|Before — a kitchen waiting to be transformed.",
+      "IMAGE:/blog/entrepreneur-after.jpg|After — the same space, completely reimagined.",
+      "SECTION:The Backyard That Changed Everything",
+      "After the renovation, an empty backyard sparked a new idea. Around 2018, when ADUs were just emerging, I decided to build one. It wasn't easy—there were unknowns everywhere—but it was exciting. When it was done, it became proof that I could create something meaningful from nothing.",
+      "IMAGE:/blog/entrepreneur-adu.jpg|The first ADU build — proof that something meaningful can come from nothing.",
+      "SECTION:When a Hobby Becomes a Business",
+      "That first ADU wasn't meant to start a business—but it did. One project led to another. People noticed. Opportunities came in. Slowly, what began as curiosity turned into something real.",
+      "IMAGE:/blog/entrepreneur-house.jpg|One project led to another — and slowly, a business took shape.",
+      "SECTION:Still Building",
+      "I'm still learning, still building. I didn't start with a dream—I built one along the way. And sometimes, that's all it takes. Check out more at [INBA-Designs.com](https://www.inba-designs.com)",
+    ],
+  },
   "slow-travel": {
     title: "The Art of Slow Travel: Less Places, More Meaning",
     date: "November 10, 2025",
@@ -163,6 +184,10 @@ const BlogPost = () => {
               <p key={i} className="text-foreground text-lg leading-relaxed font-bold italic">
                 {renderText(paragraph.replace("HIGHLIGHT:", "").trim())}
               </p>
+            ) : paragraph.startsWith("SECTION:") ? (
+              <h2 key={i} className="font-serif text-2xl md:text-3xl font-bold text-foreground mt-10 mb-2">
+                {paragraph.replace("SECTION:", "").trim()}
+              </h2>
             ) : paragraph.startsWith("QUOTE:") ? (
               <blockquote
                 key={i}
