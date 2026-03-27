@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Passions from "@/components/Passions";
 import Blog from "@/components/Blog";
+import Subscribe from "@/components/Subscribe";
 import Contact from "@/components/Contact";
 
 const Index = () => {
@@ -26,6 +27,7 @@ const Index = () => {
       <About />
       <Passions />
       <Blog />
+      <Subscribe />
       <Contact />
     </div>
   );

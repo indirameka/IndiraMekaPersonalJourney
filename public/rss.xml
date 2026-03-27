@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Indira Meka | Blog</title>
+    <link>https://www.indirameka.com</link>
+    <description>Stories from my travels, garden, and entrepreneurial journey.</description>
+    <language>en-us</language>
+    <atom:link href="https://www.indirameka.com/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>From No Dreams to Building Them: My Unexpected Journey into Entrepreneurship</title>
+      <link>https://www.indirameka.com/blog/entrepreneurship-journey</link>
+      <description>I didn't grow up dreaming of becoming an entrepreneur. There was no grand vision—just curiosity, hobbies, and a willingness to try things. Here's how a fixer-upper changed everything.</description>
+      <pubDate>Fri, 27 Mar 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.indirameka.com/blog/entrepreneurship-journey</guid>
+    </item>
+
+    <item>
+      <title>Chasing Wonders: From a Song to Six (and One More to Go)</title>
+      <link>https://www.indirameka.com/blog/chasing-wonders</link>
+      <description>It started with a song—and a quiet dream to one day stand at each of the New Seven Wonders. Six checked off, one still waiting. Here's the journey so far.</description>
+      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.indirameka.com/blog/chasing-wonders</guid>
+    </item>
+
+    <item>
+      <title>How Growing My Own Tomatoes Ruined Store-Bought Ones</title>
+      <link>https://www.indirameka.com/blog/tomatoes</link>
+      <description>Growing has always been my passion — but I didn't expect it to ruin tomatoes for me. Once you've had a real tomato, there's no going back.</description>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.indirameka.com/blog/tomatoes</guid>
+    </item>
+
+    <item>
+      <title>The Art of Slow Travel: Less Places, More Meaning</title>
+      <link>https://www.indirameka.com/blog/slow-travel</link>
+      <description>In a world obsessed with bucket lists, I've discovered the transformative power of staying longer and going deeper.</description>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid isPermaLink="true">https://www.indirameka.com/blog/slow-travel</guid>
+    </item>
+
+  </channel>
+</rss>
