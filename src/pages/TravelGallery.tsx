@@ -9,6 +9,8 @@ import travel5 from "@/assets/travel-gallery-5.jpg";
 import travel6 from "@/assets/travel-gallery-6.jpg";
 import travel7 from "@/assets/travel-gallery-7.jpg";
 import travel8 from "@/assets/travel-gallery-8.jpg";
+import travel9 from "@/assets/travel-gallery-9.jpg";
+import travel10 from "@/assets/travel-gallery-10.jpg";
 
 const photos = [
   {
@@ -50,6 +52,16 @@ const photos = [
     src: travel8,
     location: "Warangal, Telangana, India",
     caption: "Among the ancient red-stone ruins of the Kakatiya temples — history you can touch.",
+  },
+  {
+    src: travel9,
+    location: "Chichén Itzá, Mexico",
+    caption: "El Castillo pyramid — one of the New Seven Wonders, rising from the Yucatán jungle.",
+  },
+  {
+    src: travel10,
+    location: "Cenote, Mexico",
+    caption: "A hidden cenote in the Yucatán — jungle light reflected in still, dark water.",
   },
 ];
 
