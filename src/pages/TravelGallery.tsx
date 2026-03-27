@@ -45,7 +45,7 @@ const photos = [
   },
   {
     src: travel7,
-    location: "Misty Lake, Asia",
+    location: "Laknavaram, Telangana, India",
     caption: "A solitary pagoda emerges through morning mist — the world perfectly reflected.",
   },
   {
