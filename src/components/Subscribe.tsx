@@ -9,7 +9,7 @@ const Subscribe = () => {
     e.preventDefault();
     setStatus("sending");
     try {
-      const res = await fetch("https://formspree.io/mail@indirameka.com", {
+      const res = await fetch("https://formspree.io/f/xqegzyyl", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
