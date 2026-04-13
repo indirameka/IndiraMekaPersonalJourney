@@ -1,15 +1,32 @@
 import { useState } from "react";
 import { Bell } from "lucide-react";
 
-const MAILCHIMP_ACTION =
-  "https://indirameka.us2.list-manage.com/subscribe/post?u=5f98eb895f419b3b60c189e44&id=5d2b22c972&f_id=0077a1e0f0";
-
 const Subscribe = () => {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
 
-  const handleSubmit = () => {
-    if (email) setSubmitted(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("https://formspree.io/mail@indirameka.com", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: "New Blog Subscriber",
+          subscriber_email: email,
+          message: `New subscriber: ${email}`,
+        }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setEmail("");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -27,47 +44,39 @@ const Subscribe = () => {
             Get notified whenever I publish a new story — travel, garden, or entrepreneurship.
           </p>
 
-          {submitted ? (
+          {status === "success" ? (
             <div className="text-primary font-medium">
-              Thanks for subscribing! Check your inbox to confirm.
+              You're on the list! I'll notify you when new posts go live.
             </div>
           ) : (
             <form
-              action={MAILCHIMP_ACTION}
-              method="post"
-              target="_blank"
               onSubmit={handleSubmit}
               className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
             >
               <input
                 type="email"
-                name="EMAIL"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
                 className="flex-1 px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm"
               />
-              {/* Mailchimp bot protection — must stay hidden */}
-              <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
-                <input
-                  type="text"
-                  name="b_5f98eb895f419b3b60c189e44_5d2b22c972"
-                  tabIndex={-1}
-                  defaultValue=""
-                />
-              </div>
               <button
                 type="submit"
-                className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm hover:bg-primary/90 transition-all duration-300 hover:scale-105 whitespace-nowrap"
+                disabled={status === "sending"}
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium text-sm hover:bg-primary/90 transition-all duration-300 hover:scale-105 whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Subscribe
+                {status === "sending" ? "Sending..." : "Notify Me"}
               </button>
             </form>
           )}
 
+          {status === "error" && (
+            <p className="text-sm text-red-500 mt-3">Something went wrong. Please try again.</p>
+          )}
+
           <p className="text-xs text-muted-foreground mt-4">
-            No spam, ever. Unsubscribe anytime.
+            No spam, ever. Just a heads-up when something new is published.
           </p>
         </div>
       </div>
