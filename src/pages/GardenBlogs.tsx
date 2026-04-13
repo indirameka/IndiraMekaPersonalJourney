@@ -4,6 +4,15 @@ import Navigation from "@/components/Navigation";
 
 const gardenPosts = [
   {
+    slug: "spring-gardening",
+    title: "How Spring Changed on Me: Gardening in Pleasanton Isn't What It Used to Be",
+    excerpt:
+      "A few years ago, gardening felt predictable. Over the past few seasons, I've found myself second-guessing everything — because spring just doesn't behave the same anymore...",
+    date: "April 12, 2026",
+    readTime: "6 min read",
+    image: "/blog/spring-garden-card.jpg",
+  },
+  {
     slug: "tomatoes",
     title: "How Growing My Own Tomatoes Ruined Store-Bought Ones",
     excerpt:

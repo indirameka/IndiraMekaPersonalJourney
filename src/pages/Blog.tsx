@@ -4,6 +4,17 @@ import Navigation from "@/components/Navigation";
 
 const allPosts = [
   {
+    slug: "spring-gardening",
+    title: "How Spring Changed on Me: Gardening in Pleasanton Isn't What It Used to Be",
+    excerpt:
+      "A few years ago, gardening felt predictable. Over the past few seasons, I've found myself second-guessing everything — because spring just doesn't behave the same anymore...",
+    date: "April 12, 2026",
+    category: "Gardening",
+    readTime: "6 min read",
+    image: "/blog/spring-garden-card.jpg",
+    isNew: true,
+  },
+  {
     slug: "entrepreneurship-journey",
     title: "From No Dreams to Building Them: My Unexpected Journey into Entrepreneurship",
     excerpt:
@@ -12,7 +23,6 @@ const allPosts = [
     category: "Entrepreneurship",
     readTime: "5 min read",
     image: "/blog/entrepreneur-card.jpg",
-    isNew: true,
   },
   {
     slug: "chasing-wonders",

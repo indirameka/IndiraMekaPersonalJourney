@@ -63,6 +63,51 @@ const posts: Record<
       "IMAGE:/blog/tomatoes-detail.jpg|Fresh from the garden — nothing store-bought comes close.",
     ],
   },
+  "spring-gardening": {
+    title: "How Spring Changed on Me: Gardening in Pleasanton Isn't What It Used to Be",
+    date: "April 12, 2026",
+    category: "Gardening",
+    readTime: "6 min read",
+    content: [
+      "A few years ago, gardening felt predictable. Living in Pleasanton, I used to follow a simple rhythm:",
+      "LIST:Start seeds in early spring||Transplant in April||Watch everything slowly come to life",
+      "It worked. Almost every time. But over the past few seasons, I've found myself second-guessing everything. Because spring… just doesn't behave the same anymore.",
+      "SECTION:🌦 The Moment I Realized Something Was Off",
+      "I remember one March morning — I think it was 2021 — in Pleasanton. It felt like summer. Short sleeves. Bright sun. My plants were thriving. So I did what any gardener would do: I got excited and planted early.",
+      "And then, just days later, the cold winds came back. Nights dropped. Growth stalled. Some of my seedlings didn't make it.",
+      "That's when it hit me: **it's not just \"warmer\" now — it's wildly inconsistent.**",
+      "SECTION:📊 What the Data Confirms (And We're Feeling in Our Backyards)",
+      "What I experienced isn't just anecdotal — it's happening everywhere:",
+      "LIST:Spring temperatures in the U.S. have increased by about 2.4°F since 1970||In California, we've warmed nearly 3°F over the past century||Over 95% of counties are seeing warmer springs",
+      "But here's the real issue: **spring isn't just warmer — it's more unpredictable.** We're seeing sudden March heat spikes that feel like June, cold snaps after warm stretches, and longer dry periods followed by sudden changes. Even here in the Bay Area, we've had some of the warmest and driest early springs on record.",
+      "IMAGE:/blog/spring-chart-1.jpg|Pleasanton Spring Temperature Trends (March vs April) — the numbers confirm what we're already feeling in the garden.",
+      "SECTION:🌸 Plants Don't Know What to Do Anymore",
+      "Plants don't follow calendars — we do. They respond to temperature, light, and soil conditions. And those signals are now out of sync.",
+      "LIST:Plants are blooming weeks earlier than usual||Some growth cycles are shifting by up to a month or more",
+      "But here's the problem I've seen in my own garden: **early growth doesn't mean safe growth.** Warm weather tricks plants into starting early — and then the cold comes back to undo all that progress.",
+      "SECTION:🌱 What I Had to Unlearn as a Gardener",
+      "This has been the hardest part. I had to let go of what used to work.",
+      "**I stopped trusting the calendar.** \"Plant in March\" doesn't mean anything anymore. Now I ask: what's the soil temperature? What does the next 10-day forecast look like?",
+      "**I don't trust one warm week anymore.** That one perfect week in March? It's misleading. I've learned the hard way to wait for consistent patterns — not just a few good days.",
+      "**I take hardening off more seriously.** Before, I could rush this step. Now I don't. With unpredictable wind, sun, and temperature swings, seedlings need real time to adapt.",
+      "**I watch watering much more closely.** With sudden weather shifts, soil dries faster than expected — or stays wet far longer than it should. There's no \"set schedule\" anymore.",
+      "**I pay attention to my microclimate.** My backyard in Pleasanton has hot spots near walls, cooler shaded corners, and areas that dry out faster. What works in one part of my yard simply doesn't work in another.",
+      "IMAGE:/blog/spring-chart-2.jpg|Expected vs Reality: Pleasanton Spring — what we planned for versus what the season actually delivered.",
+      "SECTION:✅ What I Do Differently Now",
+      "Instead of following rigid rules, I've shifted to observing and adapting. Here's what's working for me:",
+      "LIST:Checking soil temperature before planting — not just the calendar date||Staggering planting times instead of putting everything in at once||Using frost covers when temperatures dip unexpectedly||Watching hyperlocal forecasts closely, not just regional weather||Choosing more resilient, heat-tolerant plant varieties",
+      "SECTION:🌍 This Is Bigger Than My Garden",
+      "At first, I thought I was just having a bad gardening year. But it's bigger than that.",
+      "QUOTE:The truth is: the natural world is changing. — David Attenborough",
+      "That sounds dramatic — but when you're watching your plants struggle with confused seasons, it starts to feel very real, very close to home.",
+      "SECTION:🌿 Why This Matters for Growers Like Us",
+      "This shift is exactly why I started building **Growers-Hub** — because gardening is no longer about following fixed schedules. It's about learning from each other in real time: what worked this week, what failed unexpectedly, what to try next.",
+      "SECTION:🌱 Final Thought",
+      "Living in Pleasanton, I've realized something important: the weather hasn't just changed — **the rules of gardening have changed.**",
+      "And honestly? That's not a bad thing. It's forcing us to become more observant, more connected, and more adaptable.",
+      "HIGHLIGHT:Because today, the best gardeners aren't the ones who follow the rules perfectly — they're the ones who adapt the fastest.",
+    ],
+  },
   "entrepreneurship-journey": {
     title: "From No Dreams to Building Them: My Unexpected Journey into Entrepreneurship",
     date: "March 27, 2026",
@@ -180,6 +225,12 @@ const BlogPost = () => {
                   </figcaption>
                 )}
               </figure>
+            ) : paragraph.startsWith("LIST:") ? (
+              <ul key={i} className="space-y-2 pl-5 text-foreground text-lg leading-relaxed list-disc">
+                {paragraph.replace("LIST:", "").split("||").map((item, j) => (
+                  <li key={j}>{renderText(item.trim())}</li>
+                ))}
+              </ul>
             ) : paragraph.startsWith("HIGHLIGHT:") ? (
               <p key={i} className="text-foreground text-lg leading-relaxed font-bold italic">
                 {renderText(paragraph.replace("HIGHLIGHT:", "").trim())}

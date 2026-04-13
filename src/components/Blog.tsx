@@ -17,6 +17,17 @@ const Blog = () => {
 
   const posts: BlogPost[] = [
     {
+      slug: "spring-gardening",
+      title: "How Spring Changed on Me: Gardening in Pleasanton Isn't What It Used to Be",
+      excerpt:
+        "A few years ago, gardening felt predictable. Over the past few seasons, I've found myself second-guessing everything — because spring just doesn't behave the same anymore...",
+      date: "April 12, 2026",
+      category: "Gardening",
+      readTime: "6 min read",
+      image: "/blog/spring-garden-card.jpg",
+      isNew: true,
+    },
+    {
       slug: "entrepreneurship-journey",
       title: "From No Dreams to Building Them: My Unexpected Journey into Entrepreneurship",
       excerpt:
@@ -25,7 +36,6 @@ const Blog = () => {
       category: "Entrepreneurship",
       readTime: "5 min read",
       image: "/blog/entrepreneur-card.jpg",
-      isNew: true,
     },
     {
       slug: "chasing-wonders",
@@ -36,16 +46,6 @@ const Blog = () => {
       category: "Travel",
       readTime: "5 min read",
       image: "/blog/wonders-collage.png",
-    },
-    {
-      slug: "tomatoes",
-      title: "How Growing My Own Tomatoes Ruined Store-Bought Ones",
-      excerpt:
-        "Growing has always been my passion — but I didn't expect it to ruin tomatoes for me. Once you've had a real tomato, there's no going back...",
-      date: "November 28, 2025",
-      category: "Gardening",
-      readTime: "4 min read",
-      image: "/blog/tomatoes-detail.jpg",
     },
   ];
 
