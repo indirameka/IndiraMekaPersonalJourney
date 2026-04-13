@@ -167,7 +167,7 @@ const BlogPost = () => {
             Post not found
           </h1>
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/blog")}
             className="inline-flex items-center gap-2 text-primary font-medium"
           >
             <ArrowLeft size={18} />
@@ -182,7 +182,7 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-12 max-w-3xl">
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/blog")}
           className="inline-flex items-center gap-2 text-primary font-medium mb-10 hover:gap-3 transition-all duration-300"
         >
           <ArrowLeft size={18} />
@@ -256,7 +256,7 @@ const BlogPost = () => {
 
         <div className="mt-16 pt-8 border-t border-border">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/blog")}
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all duration-300"
           >
             <ArrowLeft size={18} />
